@@ -1,26 +1,92 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Fonts */
+  --font-heading: var(--font-playfair);
+  --font-body: var(--font-inter);
+  
+  /* Colors - Dark Theme Primary */
+  --color-background: 0 0% 0%; /* Pure black */
+  --color-foreground: 0 0% 100%; /* Pure white */
+  --color-card: 0 0% 4%; /* #0A0A0A - Very dark gray */
+  --color-card-foreground: 0 0% 100%;
+  --color-popover: 0 0% 4%;
+  --color-popover-foreground: 0 0% 100%;
+  --color-primary: 0 0% 100%; /* White */
+  --color-primary-foreground: 0 0% 0%; /* Black */
+  --color-secondary: 0 0% 10%; /* #1A1A1A */
+  --color-secondary-foreground: 0 0% 96%; /* #F5F5F5 */
+  --color-muted: 0 0% 10%;
+  --color-muted-foreground: 0 0% 70%;
+  --color-accent: 0 0% 10%;
+  --color-accent-foreground: 0 0% 96%;
+  --color-destructive: 0 84.2% 60.2%;
+  --color-border: 0 0% 100% / 10%; /* rgba(255,255,255,0.1) */
+  --color-input: 0 0% 100% / 15%; /* rgba(255,255,255,0.15) */
+  --color-ring: 0 0% 100%;
+  
+  /* Radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Letter Spacing */
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-wider: 0.1em;
+  --letter-spacing-widest: 0.15em;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.5rem;
+  /* Default to dark theme */
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-black text-white font-body antialiased;
+    letter-spacing: 0.02em;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+    letter-spacing: var(--letter-spacing-wide);
+  }
+  
+  /* Focus states for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-white ring-offset-2 ring-offset-black;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .tracking-wide {
+    letter-spacing: var(--letter-spacing-wide);
+  }
+  
+  .tracking-wider {
+    letter-spacing: var(--letter-spacing-wider);
+  }
+  
+  .tracking-widest {
+    letter-spacing: var(--letter-spacing-widest);
+  }
+  
+  /* Glassmorphism Navigation */
+  .glassmorphism-nav {
+    background: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+  }
 }
