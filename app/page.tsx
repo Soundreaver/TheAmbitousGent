@@ -3,7 +3,7 @@ import { Hero } from '@/components/sections/hero'
 import { Services } from '@/components/sections/services'
 import { About } from '@/components/sections/about'
 import { Experience } from '@/components/sections/experience'
-import { Testimonials } from '@/components/sections/testimonials'
+import { Brands } from '@/components/sections/brands'
 import { Contact } from '@/components/sections/contact'
 import { Footer } from '@/components/footer'
 
@@ -13,10 +13,10 @@ export default function Home() {
       <NavigationAceternity />
       <main id="main-content">
         <Hero />
-        <Services />
+        {/* <Services /> */}
         <Experience />
         <About />
-        <Testimonials />
+        <Brands />
         <Contact />
       </main>
       <Footer />

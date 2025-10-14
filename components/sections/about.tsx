@@ -5,7 +5,15 @@ import { motion } from 'framer-motion'
 export function About() {
   return (
     <section id="about" className="relative py-24 lg:py-32 bg-zinc-950">
-      <div className="container mx-auto px-6">
+
+      <div className="container mx-auto px-6"></div>
+      {/* Top fade overlay */}
+      {/* <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent pointer-events-none z-10" /> */}
+      
+      {/* Bottom fade overlay */}
+      {/* <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-10" /> */}
+      
+      <div className="container mx-auto px-6 relative z-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: Pull Quote */}
@@ -18,7 +26,7 @@ export function About() {
             >
               <div className="relative">
                 {/* Quotation mark */}
-                <span className="absolute -top-4 -left-2 text-8xl lg:text-9xl text-white/10 font-heading leading-none">
+                <span className="absolute -top-4 -left-2 text-8xl lg:text-9xl text-gold/20 font-heading leading-none">
                   "
                 </span>
                 
@@ -29,7 +37,7 @@ export function About() {
                 </blockquote>
 
                 {/* Decorative line */}
-                <div className="mt-8 w-24 h-px bg-white/20" />
+                <div className="mt-8 w-24 h-px bg-gold-gradient" />
               </div>
             </motion.div>
 
@@ -41,8 +49,8 @@ export function About() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="space-y-6"
             >
-              <h2 className="text-4xl lg:text-5xl font-heading tracking-wide text-white mb-8">
-                Our Philosophy
+              <h2 className="text-4xl lg:text-5xl font-heading tracking-wide mb-8">
+                <span className="text-gold-gradient">Our Philosophy</span>
               </h2>
 
               <p className="text-lg text-white/80 leading-relaxed tracking-wide">
@@ -58,8 +66,8 @@ export function About() {
               </p>
 
               <div className="pt-6">
-                <div className="inline-flex items-center gap-3 text-white/60 text-sm tracking-widest uppercase">
-                  <div className="w-12 h-px bg-white/20" />
+                <div className="inline-flex items-center gap-3 text-gold/80 text-sm tracking-widest uppercase">
+                  <div className="w-12 h-px bg-gold-gradient" />
                   <span>Since 2024</span>
                 </div>
               </div>

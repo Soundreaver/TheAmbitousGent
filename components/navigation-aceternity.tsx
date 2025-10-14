@@ -18,7 +18,7 @@ const navLinks = [
   { name: 'Services', link: '#services' },
   { name: 'Experience', link: '#experience' },
   { name: 'About', link: '#about' },
-  { name: 'Testimonials', link: '#testimonials' },
+  { name: 'Brands', link: '#brands' },
   { name: 'Contact', link: '#contact' },
 ]
 
@@ -46,7 +46,7 @@ export function NavigationAceternity() {
         <a
           href="#home"
           onClick={(e) => handleNavClick(e, '#home')}
-          className="relative z-20 flex items-center space-x-2 px-2 py-1 text-2xl font-heading tracking-widest text-white hover:opacity-80 transition-opacity"
+          className="relative z-20 flex items-center space-x-2 px-2 py-1 text-2xl font-heading tracking-widest text-gold-shine hover-gold-glow transition-all"
         >
           TAG
         </a>
@@ -55,18 +55,16 @@ export function NavigationAceternity() {
         <NavItems
           items={navLinks}
           onItemClick={() => {}}
-          className="!text-white/70 hover:!text-white"
+          className="!text-white/70 hover:!text-gold transition-colors"
         />
 
         {/* CTA Button */}
-        <NavbarButton
-          variant="dark"
-          as="button"
+        <button
           onClick={() => scrollToSection('#contact')}
-          className="!bg-white !text-black hover:!bg-white/90 !tracking-wide !font-normal"
+          className="relative z-20 px-4 py-2 rounded-md bg-gold-gradient text-black hover:shadow-gold tracking-wide font-semibold transition-all duration-300 cursor-pointer"
         >
           Book Consultation
-        </NavbarButton>
+        </button>
       </NavBody>
 
       {/* Mobile Navbar */}
@@ -76,7 +74,7 @@ export function NavigationAceternity() {
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, '#home')}
-            className="text-2xl font-heading tracking-widest text-white"
+            className="text-2xl font-heading tracking-widest text-gold-shine"
           >
             TAG
           </a>
@@ -96,14 +94,14 @@ export function NavigationAceternity() {
               key={link.name}
               href={link.link}
               onClick={(e) => handleNavClick(e, link.link)}
-              className="text-2xl font-heading tracking-wide text-white/90 hover:text-white transition-colors"
+              className="text-2xl font-heading tracking-wide text-white/90 hover:text-gold transition-colors"
             >
               {link.name}
             </a>
           ))}
           <Button
             onClick={() => scrollToSection('#contact')}
-            className="w-full bg-white text-black hover:bg-white/90 tracking-wide py-6 text-lg mt-4"
+            className="w-full bg-gold-gradient text-black hover:shadow-gold tracking-wide py-6 text-lg mt-4 font-semibold transition-all duration-300"
           >
             Book Consultation
           </Button>

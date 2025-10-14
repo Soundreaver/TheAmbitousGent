@@ -40,6 +40,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-tag_build_guide.md
-DEPLOYMENT_GUIDE.md
-TESTING_CHECKLIST.md
+/docs

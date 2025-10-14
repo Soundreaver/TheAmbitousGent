@@ -67,11 +67,11 @@ export function Contact() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-12 lg:mb-16"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading tracking-widest text-white mb-6">
-              Begin Your Journey
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading tracking-widest mb-6">
+              <span className="text-gold-gradient">Begin Your Journey</span>
             </h2>
             <p className="text-lg md:text-xl text-white/70 tracking-wide leading-relaxed">
-              Take the first step toward excellence. Share your vision with us, and we'll create a personalized path to your transformation.
+              Take the first step toward <span className="text-gold">excellence</span>. Share your vision with us, and we'll create a personalized path to your transformation.
             </p>
           </motion.div>
 
@@ -95,7 +95,7 @@ export function Contact() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-white/40 focus:ring-white/20 h-12"
+                  className="bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-gold focus:ring-gold/20 h-12"
                   placeholder="Your full name"
                 />
               </div>
@@ -145,7 +145,7 @@ export function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={6}
-                  className="w-full bg-white/5 border border-white/20 text-white placeholder:text-white/40 focus:border-white/40 focus:ring-1 focus:ring-white/20 rounded-md px-4 py-3 resize-none outline-none transition-colors"
+                  className="w-full bg-white/5 border border-white/20 text-white placeholder:text-white/40 focus:border-gold focus:ring-1 focus:ring-gold/20 rounded-md px-4 py-3 resize-none outline-none transition-colors"
                   placeholder="Tell us about your goals and what you hope to achieve..."
                 />
               </div>
@@ -181,7 +181,7 @@ export function Contact() {
               <Button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full bg-white text-black hover:bg-white/90 h-14 text-base tracking-wide group"
+                className="w-full bg-gold-gradient text-black hover:shadow-gold h-14 text-base font-semibold tracking-wide group transition-all duration-300"
               >
                 {status === 'loading' ? (
                   'Sending...'
@@ -203,7 +203,7 @@ export function Contact() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-center mt-12 text-white/50 text-sm tracking-wide"
           >
-            <p>All inquiries are treated with complete discretion and confidentiality.</p>
+            <p>All inquiries are treated with complete <span className="text-gold/70">discretion and confidentiality</span>.</p>
           </motion.div>
         </div>
       </div>

@@ -46,8 +46,8 @@ export function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="text-3xl font-heading tracking-widest text-white mb-4">
-                TAG
+              <h3 className="text-3xl font-heading tracking-widest mb-4">
+                <span className="text-gold-shine">TAG</span>
               </h3>
               <p className="text-white/70 tracking-wide leading-relaxed max-w-md">
                 The Ambitious Gent — Where sophistication meets ambition. Elevating the modern professional through timeless elegance and refined presence.
@@ -62,7 +62,7 @@ export function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="text-white font-medium tracking-widest uppercase text-sm mb-6">
+            <h4 className="text-gold font-medium tracking-widest uppercase text-sm mb-6">
               Services
             </h4>
             <ul className="space-y-3">
@@ -74,7 +74,7 @@ export function Footer() {
                       e.preventDefault()
                       scrollToSection(link.href)
                     }}
-                    className="text-white/60 hover:text-white transition-colors tracking-wide text-sm"
+                    className="text-white/60 hover:text-gold transition-colors tracking-wide text-sm"
                   >
                     {link.name}
                   </a>
@@ -90,7 +90,7 @@ export function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="text-white font-medium tracking-widest uppercase text-sm mb-6">
+            <h4 className="text-gold font-medium tracking-widest uppercase text-sm mb-6">
               Company
             </h4>
             <ul className="space-y-3">
@@ -102,7 +102,7 @@ export function Footer() {
                       e.preventDefault()
                       scrollToSection(link.href)
                     }}
-                    className="text-white/60 hover:text-white transition-colors tracking-wide text-sm"
+                    className="text-white/60 hover:text-gold transition-colors tracking-wide text-sm"
                   >
                     {link.name}
                   </a>
@@ -147,9 +147,9 @@ export function Footer() {
                       }
                     }}
                     aria-label={social.name}
-                    className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors group"
+                    className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-gold/10 hover:border-gold transition-all group border border-transparent"
                   >
-                    <Icon className="w-4 h-4 text-white/60 group-hover:text-white transition-colors" />
+                    <Icon className="w-4 h-4 text-white/60 group-hover:text-gold transition-colors" />
                   </a>
                 )
               })}
@@ -165,13 +165,13 @@ export function Footer() {
             >
               <a
                 href="#"
-                className="text-white/50 hover:text-white text-sm tracking-wide transition-colors"
+                className="text-white/50 hover:text-gold text-sm tracking-wide transition-colors"
               >
                 Privacy
               </a>
               <a
                 href="#"
-                className="text-white/50 hover:text-white text-sm tracking-wide transition-colors"
+                className="text-white/50 hover:text-gold text-sm tracking-wide transition-colors"
               >
                 Terms
               </a>
