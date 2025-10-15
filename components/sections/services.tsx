@@ -87,16 +87,13 @@ export function Services() {
                     </p>
 
                     {/* Learn More Link */}
-                    <button 
-                      onClick={() => {
-                        const element = document.getElementById('contact')
-                        if (element) element.scrollIntoView({ behavior: 'smooth' })
-                      }}
+                    <a 
+                      href="/contact"
                       className="text-white/90 hover:text-white text-sm tracking-widest uppercase inline-flex items-center gap-2 group/link transition-colors"
                     >
-                      Learn More
+                      Book Consultation
                       <span className="inline-block transition-transform group-hover/link:translate-x-1">→</span>
-                    </button>
+                    </a>
                   </CardContent>
                 </Card>
               </motion.div>

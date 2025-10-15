@@ -68,10 +68,10 @@ export function Contact() {
             className="text-center mb-12 lg:mb-16"
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading tracking-widest mb-6">
-              <span className="text-gold-gradient">Begin Your Journey</span>
+              <span className="text-gold-gradient">Brand Partnerships</span>
             </h2>
             <p className="text-lg md:text-xl text-white/70 tracking-wide leading-relaxed">
-              Take the first step toward <span className="text-gold">excellence</span>. Share your vision with us, and we'll create a personalized path to your transformation.
+              Interested in collaborating with <span className="text-gold">The Ambitious Gent</span>? Let's explore partnership opportunities that align with our shared vision of excellence.
             </p>
           </motion.div>
 
@@ -136,7 +136,7 @@ export function Contact() {
               {/* Message Field */}
               <div className="space-y-2">
                 <Label htmlFor="message" className="text-white/90 tracking-wide">
-                  Message / Goals *
+                  Partnership Proposal *
                 </Label>
                 <textarea
                   id="message"
@@ -146,7 +146,7 @@ export function Contact() {
                   onChange={handleChange}
                   rows={6}
                   className="w-full bg-white/5 border border-white/20 text-white placeholder:text-white/40 focus:border-gold focus:ring-1 focus:ring-gold/20 rounded-md px-4 py-3 resize-none outline-none transition-colors"
-                  placeholder="Tell us about your goals and what you hope to achieve..."
+                  placeholder="Tell us about your brand and how we can collaborate..."
                 />
               </div>
 

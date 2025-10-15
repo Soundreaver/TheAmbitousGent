@@ -1,42 +1,30 @@
-"use client"
+"use client";
 
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 import {
   Navbar,
   NavBody,
-  NavItems,
   MobileNav,
   MobileNavHeader,
   MobileNavMenu,
   MobileNavToggle,
-  NavbarButton,
-} from '@/components/ui/resizable-navbar'
+} from "@/components/ui/resizable-navbar";
 
 const navLinks = [
-  { name: 'Home', link: '#home' },
-  { name: 'Services', link: '#services' },
-  { name: 'Experience', link: '#experience' },
-  { name: 'About', link: '#about' },
-  { name: 'Brands', link: '#brands' },
-  { name: 'Contact', link: '#contact' },
-]
+  { name: "The Ambitious Journal", link: "/journal" },
+  { name: "Services", link: "/services" },
+  { name: "About", link: "/about" },
+];
 
 export function NavigationAceternity() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [hovered, setHovered] = useState<number | null>(null);
 
-  const scrollToSection = (href: string) => {
-    const element = document.getElementById(href.substring(1))
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-      setIsOpen(false)
-    }
-  }
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault()
-    scrollToSection(href)
-  }
+  const handleNavClick = (href: string) => {
+    setIsOpen(false);
+  };
 
   return (
     <Navbar className="fixed top-0">
@@ -44,27 +32,57 @@ export function NavigationAceternity() {
       <NavBody className="glassmorphism-nav">
         {/* Logo */}
         <a
-          href="#home"
-          onClick={(e) => handleNavClick(e, '#home')}
+          href="/"
           className="relative z-20 flex items-center space-x-2 px-2 py-1 text-2xl font-heading tracking-widest text-gold-shine hover-gold-glow transition-all"
         >
           TAG
         </a>
 
-        {/* Nav Items */}
-        <NavItems
-          items={navLinks}
-          onItemClick={() => {}}
-          className="!text-white/70 hover:!text-gold transition-colors"
-        />
+        {/* Nav Items with Selector Animation */}
+        <motion.div
+          onMouseLeave={() => setHovered(null)}
+          className="absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 lg:flex"
+        >
+          {navLinks.map((link, idx) => (
+            <a
+              key={link.name}
+              href={link.link}
+              onMouseEnter={() => setHovered(idx)}
+              className={`relative px-4 py-2 text-base tracking-wide transition-colors ${
+                link.name === "The Ambitious Journal"
+                  ? "text-white font-semibold"
+                  : "text-white/90"
+              } hover:text-gold`}
+            >
+              {hovered === idx && (
+                <motion.div
+                  layoutId="hovered"
+                  className="absolute inset-0 h-full w-full rounded-full bg-white/10"
+                />
+              )}
+              {link.name === "The Ambitious Journal" && (
+                <>
+                  {/* Animated gradient background */}
+                  <span className="absolute inset-0 -z-10 bg-gold-gradient opacity-20 blur-xl animate-pulse" />
+                  {/* Gold shimmer effect */}
+                  <span className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-gold/30 to-transparent animate-shimmer" />
+                </>
+              )}
+              <span className="relative z-20">{link.name}</span>
+            </a>
+          ))}
+        </motion.div>
 
         {/* CTA Button */}
-        <button
-          onClick={() => scrollToSection('#contact')}
-          className="relative z-20 px-4 py-2 rounded-md bg-gold-gradient text-black hover:shadow-gold tracking-wide font-semibold transition-all duration-300 cursor-pointer"
+        <a
+          href="/contact"
+          className="group relative z-20 px-3 py-1.5 text-sm rounded-md border border-gold/40 text-gold hover:border-transparent hover:-translate-y-0.5 hover:shadow-gold-sm tracking-wide font-medium transition-all duration-300 cursor-pointer overflow-hidden"
         >
-          Book Consultation
-        </button>
+          <span className="absolute inset-0 bg-gold-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <span className="relative z-10 group-hover:text-black transition-colors duration-300">
+            Book Consultation
+          </span>
+        </a>
       </NavBody>
 
       {/* Mobile Navbar */}
@@ -72,8 +90,7 @@ export function NavigationAceternity() {
         <MobileNavHeader>
           {/* Logo */}
           <a
-            href="#home"
-            onClick={(e) => handleNavClick(e, '#home')}
+            href="/"
             className="text-2xl font-heading tracking-widest text-gold-shine"
           >
             TAG
@@ -93,20 +110,35 @@ export function NavigationAceternity() {
             <a
               key={link.name}
               href={link.link}
-              onClick={(e) => handleNavClick(e, link.link)}
-              className="text-2xl font-heading tracking-wide text-white/90 hover:text-gold transition-colors"
+              onClick={() => handleNavClick(link.link)}
+              className={`relative text-2xl font-heading tracking-wide transition-colors ${
+                link.name === "The Ambitious Journal"
+                  ? "text-white hover:text-gold font-bold"
+                  : "text-white/90 hover:text-gold"
+              }`}
             >
+              {link.name === "The Ambitious Journal" && (
+                <>
+                  {/* Animated gradient background for mobile */}
+                  <span className="absolute inset-0 -z-10 bg-gold-gradient opacity-20 blur-xl animate-pulse" />
+                  {/* Gold shimmer effect for mobile */}
+                  <span className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-gold/30 to-transparent animate-shimmer" />
+                </>
+              )}
               {link.name}
             </a>
           ))}
-          <Button
-            onClick={() => scrollToSection('#contact')}
-            className="w-full bg-gold-gradient text-black hover:shadow-gold tracking-wide py-6 text-lg mt-4 font-semibold transition-all duration-300"
+          <a
+            href="/contact"
+            className="group relative w-full border border-gold/40 text-gold hover:border-transparent hover:shadow-gold-sm tracking-wide py-4 text-base mt-4 font-medium transition-all duration-300 text-center rounded-md block overflow-hidden"
           >
-            Book Consultation
-          </Button>
+            <span className="absolute inset-0 bg-gold-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="relative z-10 group-hover:text-black transition-colors duration-300">
+              Book Consultation
+            </span>
+          </a>
         </MobileNavMenu>
       </MobileNav>
     </Navbar>
-  )
+  );
 }
