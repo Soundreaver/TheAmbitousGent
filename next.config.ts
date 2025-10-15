@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "logo.clearbit.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "mlxfpfldraxkzgyrzgrt.supabase.co",
+        pathname: "/**",
+      },
     ],
   },
   eslint: {
