@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import { SkipToContent } from "@/components/skip-to-content";
 import { CursorTrail } from "@/components/cursor-trail";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -40,6 +41,7 @@ export default function RootLayout({
         className={`${playfair.variable} ${inter.variable} font-body antialiased`}
       >
         <Analytics/>
+        <SpeedInsights/>
         <SkipToContent />
         <CursorTrail />
         {children}
