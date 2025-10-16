@@ -3,7 +3,7 @@
 import { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { Upload, X, Check, Loader2, Image as ImageIcon } from 'lucide-react'
-import { createClient } from '@/lib/supabase'
+import { createBrowserClient } from '@supabase/ssr'
 import Image from 'next/image'
 
 interface MediaUploaderProps {
@@ -36,7 +36,10 @@ export function MediaUploader({ onUploadComplete, currentImage }: MediaUploaderP
     setError(null)
 
     try {
-      const supabase = createClient()
+      const supabase = createBrowserClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      )
       
       // Generate unique filename
       const fileExt = file.name.split('.').pop()

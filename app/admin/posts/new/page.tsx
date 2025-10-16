@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { createClient } from '@/lib/supabase'
+import { createBrowserClient } from '@supabase/ssr'
 import { RichTextEditor } from '@/components/admin/rich-text-editor'
 import { AIAssistant } from '@/components/admin/ai-assistant'
 import { MediaUploader } from '@/components/admin/media-uploader'
@@ -40,7 +40,10 @@ export default function NewPostPage() {
 
   const loadCategories = async () => {
     try {
-      const supabase = createClient()
+      const supabase = createBrowserClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      )
       const { data } = await supabase
         .from('categories')
         .select('*')
@@ -72,7 +75,10 @@ export default function NewPostPage() {
     setLoading(true)
 
     try {
-      const supabase = createClient()
+      const supabase = createBrowserClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      )
       const { data: { user } } = await supabase.auth.getUser()
       
       if (!user) {
