@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { createClient } from '@/lib/supabase'
+import { createBrowserClient } from '@supabase/ssr'
 import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { LogOut } from 'lucide-react'
@@ -19,11 +19,39 @@ export default function AdminLayout({
 
   useEffect(() => {
     checkUser()
+    
+    // Set up auth state listener
+    const supabase = createBrowserClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    )
+    
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user || null)
+      setLoading(false)
+    })
+    
+    // Cleanup subscription
+    return () => {
+      subscription.unsubscribe()
+    }
   }, [])
+  
+  // Re-check user when pathname changes
+  useEffect(() => {
+    if (pathname !== '/admin/login') {
+      checkUser()
+    }
+  }, [pathname])
 
   const checkUser = async () => {
     try {
-      const supabase = createClient()
+      // Use the same SSR client as login page
+      const supabase = createBrowserClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      )
+      
       const { data: { session } } = await supabase.auth.getSession()
       
       if (!session && pathname !== '/admin/login') {
@@ -45,7 +73,12 @@ export default function AdminLayout({
   const handleLogout = async () => {
     setLoggingOut(true)
     try {
-      const supabase = createClient()
+      // Use the same SSR client as login page
+      const supabase = createBrowserClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      )
+      
       await supabase.auth.signOut()
       
       // Call logout API to clear server-side cookies
@@ -56,12 +89,15 @@ export default function AdminLayout({
       // Clear user state
       setUser(null)
       
-      // Force hard refresh to clear all client state
-      window.location.href = '/admin/login'
+      // Redirect to login
+      router.push('/admin/login')
+      router.refresh()
     } catch (error) {
       console.error('Logout error:', error)
       // Force redirect even on error
-      window.location.href = '/admin/login'
+      router.push('/admin/login')
+    } finally {
+      setLoggingOut(false)
     }
   }
 

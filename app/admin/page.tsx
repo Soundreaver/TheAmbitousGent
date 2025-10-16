@@ -1,6 +1,7 @@
 import { createAdminClient, isSupabaseConfigured } from '@/lib/supabase'
 import { getAllPosts } from '@/lib/blog-helpers'
 import Link from 'next/link'
+import { ContactSubmissions } from '@/components/admin/contact-submissions'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -161,6 +162,11 @@ export default async function AdminDashboard() {
             See how your posts look to visitors
           </p>
         </Link>
+      </div>
+
+      {/* Contact Submissions Section */}
+      <div className="mt-12">
+        <ContactSubmissions />
       </div>
     </div>
   )

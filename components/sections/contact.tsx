@@ -28,7 +28,10 @@ export function Contact() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          type: 'brand', // Distinguish from client consultations
+        }),
       })
 
       const data = await response.json()

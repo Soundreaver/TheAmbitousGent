@@ -195,30 +195,34 @@
     animation: gold-metallic 4s ease-in-out infinite;
   }
   
-  /* Infinite Scroll Animations */
-  .animate-infinite-scroll {
-    animation: infinite-scroll 40s linear infinite;
+  /* Infinite Scroll Animations - Improved for seamless loop */
+  .animate-scroll-left {
+    animation: scroll-left 60s linear infinite;
   }
   
-  .animate-infinite-scroll-reverse {
-    animation: infinite-scroll-reverse 40s linear infinite;
+  .animate-scroll-left-slow {
+    animation: scroll-left 80s linear infinite;
+  }
+  
+  .animate-scroll-right {
+    animation: scroll-right 60s linear infinite;
   }
 }
 
-@keyframes infinite-scroll {
-  from {
+@keyframes scroll-left {
+  0% {
     transform: translateX(0);
   }
-  to {
-    transform: translateX(-50%);
+  100% {
+    transform: translateX(-33.333%);
   }
 }
 
-@keyframes infinite-scroll-reverse {
-  from {
-    transform: translateX(-50%);
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-33.333%);
   }
-  to {
+  100% {
     transform: translateX(0);
   }
 }
