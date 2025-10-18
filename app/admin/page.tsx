@@ -138,7 +138,7 @@ export default async function AdminDashboard() {
       </div>
 
       {/* Quick Actions */}
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
         <Link
           href="/admin/posts/new"
           className="border border-white/10 rounded-lg p-6 bg-zinc-950 hover:border-gold/30 transition-colors group"
@@ -148,6 +148,18 @@ export default async function AdminDashboard() {
           </h3>
           <p className="text-white/60 text-sm">
             Start writing with AI-powered assistance
+          </p>
+        </Link>
+
+        <Link
+          href="/admin/gallery"
+          className="border border-white/10 rounded-lg p-6 bg-zinc-950 hover:border-gold/30 transition-colors group"
+        >
+          <h3 className="text-xl font-heading text-white mb-2 group-hover:text-gold transition-colors">
+            Gallery Manager
+          </h3>
+          <p className="text-white/60 text-sm">
+            Manage featured images for services page
           </p>
         </Link>
 
