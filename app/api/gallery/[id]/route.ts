@@ -4,16 +4,17 @@ import { createAdminClient } from '@/lib/supabase';
 // Update gallery image (toggle featured status)
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { is_featured } = await request.json();
+    const { id } = await params;
     const supabase = createAdminClient();
 
     const { error } = await supabase
       .from('gallery_images')
       .update({ is_featured })
-      .eq('id', params.id);
+      .eq('id', id);
 
     if (error) {
       console.error('Update error:', error);
@@ -36,16 +37,17 @@ export async function PATCH(
 // Delete gallery image
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const supabase = createAdminClient();
 
     // Get image URL first to delete from storage
     const { data: image, error: fetchError } = await supabase
       .from('gallery_images')
       .select('url')
-      .eq('id', params.id)
+      .eq('id', id)
       .single();
 
     if (fetchError) {
@@ -72,7 +74,7 @@ export async function DELETE(
     const { error: deleteError } = await supabase
       .from('gallery_images')
       .delete()
-      .eq('id', params.id);
+      .eq('id', id);
 
     if (deleteError) {
       console.error('Delete error:', deleteError);
