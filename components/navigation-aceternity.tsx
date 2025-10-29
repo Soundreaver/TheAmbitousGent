@@ -50,7 +50,7 @@ export function NavigationAceternity() {
               onMouseEnter={() => setHovered(idx)}
               className={`relative px-4 py-2 text-base tracking-wide transition-colors ${
                 link.name === "The Ambitious Journal"
-                  ? "text-white font-semibold"
+                  ? "text-white"
                   : "text-white/90"
               } hover:text-gold`}
             >
@@ -59,14 +59,6 @@ export function NavigationAceternity() {
                   layoutId="hovered"
                   className="absolute inset-0 h-full w-full rounded-full bg-white/10"
                 />
-              )}
-              {link.name === "The Ambitious Journal" && (
-                <>
-                  {/* Animated gradient background */}
-                  <span className="absolute inset-0 -z-10 bg-gold-gradient opacity-20 blur-xl animate-pulse" />
-                  {/* Gold shimmer effect */}
-                  <span className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-gold/30 to-transparent animate-shimmer" />
-                </>
               )}
               <span className="relative z-20">{link.name}</span>
             </a>
@@ -117,14 +109,6 @@ export function NavigationAceternity() {
                   : "text-white/90 hover:text-gold"
               }`}
             >
-              {link.name === "The Ambitious Journal" && (
-                <>
-                  {/* Animated gradient background for mobile */}
-                  <span className="absolute inset-0 -z-10 bg-gold-gradient opacity-20 blur-xl animate-pulse" />
-                  {/* Gold shimmer effect for mobile */}
-                  <span className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-gold/30 to-transparent animate-shimmer" />
-                </>
-              )}
               {link.name}
             </a>
           ))}

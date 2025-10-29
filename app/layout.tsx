@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Inter, Montserrat, Roboto } from "next/font/google";
 import { SkipToContent } from "@/components/skip-to-content";
 import { CursorTrail } from "@/components/cursor-trail";
 import { Analytics } from "@vercel/analytics/next"
@@ -15,6 +15,19 @@ const playfair = Playfair_Display({
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap',
+});
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['400', '700'], // specify weights you need
+  variable: '--font-roboto',
   display: 'swap',
 });
 
@@ -38,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${playfair.variable} ${inter.variable} font-body antialiased`}
+        className={`${playfair.variable} ${inter.variable} ${montserrat.variable} ${roboto.variable}font-body antialiased`}
       >
         <Analytics/>
         <SpeedInsights/>

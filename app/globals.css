@@ -63,9 +63,12 @@
     @apply border-border outline-ring/50;
   }
   
+  html,
   body {
     @apply bg-black text-white font-body antialiased;
     letter-spacing: 0.02em;
+    overflow-x: hidden;
+    width: 100%;
   }
   
   h1, h2, h3, h4, h5, h6 {

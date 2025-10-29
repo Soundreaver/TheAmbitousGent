@@ -61,7 +61,7 @@ function ExperienceBlock({
       <motion.div
         initial={{ opacity: 0, x: isLeft ? -60 : 60 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "-50px", amount: 0.2 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`relative aspect-[4/3] lg:aspect-square overflow-hidden bg-zinc-900 ${
           isLeft ? "lg:order-1" : "lg:order-2"
@@ -100,7 +100,7 @@ function ExperienceBlock({
       <motion.div
         initial={{ opacity: 0, x: isLeft ? 60 : -60 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "-50px", amount: 0.2 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
         className={`flex flex-col justify-center p-12 lg:p-20 xl:p-32 bg-black ${
           isLeft ? "lg:order-2" : "lg:order-1"
@@ -136,13 +136,13 @@ function ExperienceBlock({
 
 export function Experience() {
   return (
-    <section id="experience" className="relative py-24 lg:py-32 bg-black">
+    <section id="experience" className="relative py-24 lg:py-32 bg-black overflow-hidden">
       {/* Section Header - Centered with padding */}
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "-50px", amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-20 lg:mb-24"
         >
@@ -158,9 +158,9 @@ export function Experience() {
       </div>
 
       {/* Experience Blocks - Full Width */}
-      <div className="w-full">
+      <div className="w-full overflow-hidden">
         {experienceBlocks.map((block, index) => (
-          <ExperienceBlock key={block.title} block={block} index={index} />
+          <ExperienceBlock key={`exp-${index}`} block={block} index={index} />
         ))}
       </div>
     </section>

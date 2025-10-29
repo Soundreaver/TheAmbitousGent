@@ -89,9 +89,9 @@ export function Hero() {
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
-              <span className="text-white">Elevate Your</span>
+              <span className="font-semibold text-white">Elevate Your</span>
               <br />
-              <span className="block mt-2 text-gold-shine">Presence</span>
+              <span className="font-semibold lock mt-2 text-gold-shine">Presence</span>
             </motion.h1>
           </motion.div>
 

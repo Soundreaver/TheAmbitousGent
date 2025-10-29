@@ -5,8 +5,17 @@ import useCanvasCursor from "@/hooks/use-canvas-cursor";
 
 export function CursorTrail() {
   const [isInHero, setIsInHero] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if device is mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
     const handleMouseMove = (e: MouseEvent) => {
       const heroSection = document.getElementById("home");
       if (heroSection) {
@@ -17,10 +26,18 @@ export function CursorTrail() {
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("resize", checkMobile);
+    };
   }, []);
 
   useCanvasCursor();
+
+  // Don't render cursor trail on mobile
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <canvas
